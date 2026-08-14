@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm --version)",
+      "Bash(node -e ' *)",
+      "PowerShell($p=\"c:\\\\Users\\\\Gaj\\\\Desktop\\\\Rufescent-Gaming\\\\rufescent\\\\public\"; foreach \\($f in @\\(\"file.svg\",\"globe.svg\",\"next.svg\",\"vercel.svg\",\"window.svg\"\\)\\) { $t = Join-Path $p $f; if \\(Test-Path $t\\) { Remove-Item $t -Force } }; Get-ChildItem $p | Select-Object Name)",
+      "Bash(echo \"EXIT=$?\")",
+      "Bash(npx eslint *)",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell(npx tsc --noEmit; Write-Output \"EXIT=$LASTEXITCODE\")",
+      "Bash(grep -E \"^#{2,3} \")",
+      "Bash(curl -s -o /dev/null -w \"lobby:%{http_code}\\\\n\" http://localhost:3457/fantasy)",
+      "Bash(curl -s -o /dev/null -w \"detail:%{http_code}\\\\n\" http://localhost:3457/fantasy/fc-01)",
+      "Bash(curl -s -o /dev/null -w \"missing:%{http_code}\\\\n\" http://localhost:3457/fantasy/nope)",
+      "Read(//c/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d6c8df57-ff0f-421f-b455-18428e32f8df/scratchpad/**)",
+      "PowerShell($r=\"c:\\\\Users\\\\Gaj\\\\Desktop\\\\Rufescent-Gaming\\\\rufescent\"; Get-ChildItem -Force $r | Select-Object Name | Format-Table -AutoSize; Write-Output \"--- src tree ---\"; if \\(Test-Path \"$r\\\\src\"\\) { Get-ChildItem -Recurse -File \"$r\\\\src\" | ForEach-Object { $_.FullName.Substring\\($r.Length+1\\) } } else { Write-Output \"NO src DIRECTORY\" })",
+      "Bash(node -e \"let s='';process.stdin.on\\('data',d=>s+=d\\).on\\('end',\\(\\)=>{for\\(const f of JSON.parse\\(s\\)\\){if\\(!f.messages.length\\)continue;const p=f.filePath.split\\('rufescent\\\\\\\\\\\\\\\\'\\)[1];for\\(const m of f.messages\\)console.log\\(\\\\`\\\\${p}:\\\\${m.line} [\\\\${m.severity===2?'err':'warn'}] \\\\${m.ruleId}\\\\`\\)}}\\)\")",
+      "Bash(node \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d6c8df57-ff0f-421f-b455-18428e32f8df/scratchpad/lint-summary.mjs\")",
+      "Bash(curl -s \"http://localhost:3117/sports/nope\")",
+      "Bash(node -e \"const{CASINO_GAMES}=require\\('esbuild'\\)\")",
+      "Bash(node ./__overflow.mjs)",
+      "Bash(node ./__shots.mjs __TRACKED_VAR__/shots)",
+      "Bash(node ./__flows.mjs)",
+      "Bash(npm run *)",
+      "Bash(break)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3117/)",
+      "Bash(curl -s http://localhost:3117/)",
+      "PowerShell(Get-Process -Id 12432 -ErrorAction SilentlyContinue)",
+      "Bash(rm -f dev-3200.log)",
+      "Bash(npx next *)",
+      "Bash(sed -i 's|http://localhost:3117|http://localhost:3200|' \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d61a8f38-e1cc-4aa8-8b79-fe4e31f984be/scratchpad/drive.mjs\")",
+      "Bash(node \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d61a8f38-e1cc-4aa8-8b79-fe4e31f984be/scratchpad/drive.mjs\" \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d61a8f38-e1cc-4aa8-8b79-fe4e31f984be/scratchpad/shots\")",
+      "Bash(cp \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d61a8f38-e1cc-4aa8-8b79-fe4e31f984be/scratchpad/drive.mjs\" /c/Users/Gaj/Desktop/Rufescent-Gaming/rufescent/__drive.mjs)",
+      "Bash(node __drive.mjs \"C:/Users/Gaj/AppData/Local/Temp/claude/c--Users-Gaj-Desktop-Rufescent-Gaming/d61a8f38-e1cc-4aa8-8b79-fe4e31f984be/scratchpad/shots\")",
+      "Bash(rm -f /c/Users/Gaj/Desktop/Rufescent-Gaming/rufescent/__drive.mjs /c/Users/Gaj/Desktop/Rufescent-Gaming/rufescent/dev-3200.log && echo cleaned)",
+      "Bash(curl -s -o /dev/null -w \"warmup=%{http_code}\\\\n\" http://localhost:3117/sports/cricket/cr-1)",
+      "PowerShell(taskkill /PID 45480 /F 2>&1)",
+      "PowerShell(Get-Process -Name node -ErrorAction SilentlyContinue)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"
+    ]
+  }
+}
