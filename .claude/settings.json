@@ -35,7 +35,16 @@
       "Bash(rm -f /c/Users/Gaj/Desktop/Rufescent-Gaming/rufescent/__drive.mjs /c/Users/Gaj/Desktop/Rufescent-Gaming/rufescent/dev-3200.log && echo cleaned)",
       "Bash(curl -s -o /dev/null -w \"warmup=%{http_code}\\\\n\" http://localhost:3117/sports/cricket/cr-1)",
       "PowerShell(taskkill /PID 45480 /F 2>&1)",
-      "PowerShell(Get-Process -Name node -ErrorAction SilentlyContinue)"
+      "PowerShell(Get-Process -Name node -ErrorAction SilentlyContinue)",
+      "Bash(node ./__favicon.mjs)",
+      "Bash(curl -s -o /dev/null -w \"3200:%{http_code}\\\\n\" http://localhost:3200/)",
+      "Bash(git -C rufescent log --oneline -10)",
+      "Bash(git -C rufescent status --short)",
+      "Bash(git -C rufescent remote -v)",
+      "PowerShell(Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Seconds 2; $n = \\(Get-Process -Name node -ErrorAction SilentlyContinue | Measure-Object\\).Count; Write-Output \"node processes remaining: $n\")",
+      "Bash(rm -f __shots.mjs __overflow.mjs __flows.mjs __favicon.mjs dev.log tsconfig.tsbuildinfo)",
+      "Bash(rm -rf .next)",
+      "Bash(npm uninstall *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"

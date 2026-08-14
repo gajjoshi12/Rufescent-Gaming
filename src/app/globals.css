@@ -1,0 +1,297 @@
+@import "tailwindcss";
+
+/* ============================================================
+   RUFESCENT GAMING — Design System
+   "Rufescent" (adj.) — becoming reddish.
+   Palette: ember crimson + molten gold on obsidian.
+   ============================================================ */
+
+@theme {
+  /* --- Surfaces (obsidian ramp) --- */
+  --color-obsidian-950: #08070a;
+  --color-obsidian-900: #0d0b11;
+  --color-obsidian-850: #121017;
+  --color-obsidian-800: #17141d;
+  --color-obsidian-700: #211d29;
+  --color-obsidian-600: #2e2839;
+  --color-obsidian-500: #453d54;
+
+  /* --- Ember (primary crimson) --- */
+  --color-ember-50: #fff1f0;
+  --color-ember-100: #ffdedb;
+  --color-ember-200: #ffbdb7;
+  --color-ember-300: #ff8f85;
+  --color-ember-400: #f95d51;
+  --color-ember-500: #e63127;
+  --color-ember-600: #c01d1a;
+  --color-ember-700: #99161a;
+  --color-ember-800: #6d1015;
+  --color-ember-900: #430a0e;
+
+  /* --- Gold (accent / value) --- */
+  --color-gold-50: #fffaeb;
+  --color-gold-100: #fff0c4;
+  --color-gold-200: #ffe08a;
+  --color-gold-300: #ffcc4d;
+  --color-gold-400: #f5b418;
+  --color-gold-500: #d99406;
+  --color-gold-600: #ad7003;
+  --color-gold-700: #7d4f06;
+
+  /* --- Exchange semantics (Back = blue, Lay = pink; Betfair convention) --- */
+  --color-back-100: #d6ecff;
+  --color-back-300: #7cc3ff;
+  --color-back-500: #2f9bff;
+  --color-back-700: #0d4f8f;
+  --color-back-900: #0a2f56;
+  --color-lay-100: #ffdcec;
+  --color-lay-300: #ff9dc6;
+  --color-lay-500: #f5559b;
+  --color-lay-700: #97205a;
+  --color-lay-900: #5a1236;
+
+  /* --- Status --- */
+  --color-win: #2fd98a;
+  --color-loss: #ff5f56;
+  --color-live: #ff3b30;
+  --color-info: #4db8ff;
+
+  /* --- Motion --- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* --- Typography --- */
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-num), ui-monospace, "SF Mono", monospace;
+
+  /* --- Animations --- */
+  --animate-shimmer: shimmer 1.8s linear infinite;
+  --animate-pulse-live: pulse-live 1.6s var(--ease-out-expo) infinite;
+  --animate-rise: rise 0.5s var(--ease-out-expo) both;
+  --animate-sheet-up: sheet-up 0.36s var(--ease-out-expo) both;
+  --animate-fade-in: fade-in 0.3s ease both;
+  --animate-odds-up: odds-flash-up 0.9s ease-out;
+  --animate-odds-down: odds-flash-down 0.9s ease-out;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-glow-drift: glow-drift 14s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes odds-flash-up {
+  0% { background-color: color-mix(in oklab, var(--color-win) 45%, transparent); }
+  100% { background-color: transparent; }
+}
+@keyframes odds-flash-down {
+  0% { background-color: color-mix(in oklab, var(--color-loss) 45%, transparent); }
+  100% { background-color: transparent; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes glow-drift {
+  from { transform: translate3d(-6%, -4%, 0) scale(1); }
+  to { transform: translate3d(6%, 5%, 0) scale(1.15); }
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --shell-pad-bottom: 5.25rem; /* room for mobile bottom nav */
+  }
+
+  * {
+    border-color: --alpha(var(--color-obsidian-600) / 60%);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-obsidian-950);
+    color: #e9e6ef;
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04";
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ambient light field — the "molten obsidian" ground */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(38rem 30rem at 12% -4%, --alpha(var(--color-ember-700) / 34%), transparent 70%),
+      radial-gradient(30rem 26rem at 92% 8%, --alpha(var(--color-gold-700) / 20%), transparent 70%),
+      radial-gradient(40rem 34rem at 50% 108%, --alpha(var(--color-ember-900) / 55%), transparent 72%);
+    animation: var(--animate-glow-drift);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+    font-weight: 600;
+  }
+
+  /* Focus ring — accessibility baseline, visible on every surface */
+  :focus-visible {
+    outline: 2px solid var(--color-gold-300);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+
+  ::selection {
+    background: --alpha(var(--color-ember-500) / 45%);
+    color: #fff;
+  }
+
+  /* Tabular numerals everywhere odds/money appear */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================
+   Component utilities
+   ============================================================ */
+
+@utility glass {
+  background: linear-gradient(
+    155deg,
+    --alpha(var(--color-obsidian-700) / 78%),
+    --alpha(var(--color-obsidian-900) / 88%)
+  );
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid --alpha(#ffffff / 8%);
+  box-shadow:
+    0 1px 0 0 --alpha(#ffffff / 6%) inset,
+    0 18px 40px -22px --alpha(#000000 / 90%);
+}
+
+@utility glass-soft {
+  background: --alpha(var(--color-obsidian-800) / 55%);
+  backdrop-filter: blur(12px) saturate(130%);
+  -webkit-backdrop-filter: blur(12px) saturate(130%);
+  border: 1px solid --alpha(#ffffff / 6%);
+}
+
+/* Gold hairline that reads as "premium" without being loud */
+@utility gilt-edge {
+  position: relative;
+}
+
+@utility text-gilt {
+  background: linear-gradient(100deg, var(--color-gold-200) 0%, var(--color-gold-400) 45%, var(--color-gold-100) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-ember {
+  background: linear-gradient(100deg, var(--color-ember-300) 0%, var(--color-ember-500) 60%, var(--color-gold-400) 130%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    --alpha(var(--color-obsidian-700) / 60%) 25%,
+    --alpha(var(--color-obsidian-600) / 90%) 50%,
+    --alpha(var(--color-obsidian-700) / 60%) 75%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 0.5rem;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scroll-x {
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Safe-area helpers for iOS notch / home indicator */
+@utility pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
+@utility pt-safe {
+  padding-top: max(env(safe-area-inset-top), 0px);
+}
+
+/* Screen-reader-only, unhides on focus for skip links */
+@utility sr-focusable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  &:focus {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 200;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--color-gold-300);
+    color: var(--color-obsidian-950);
+    font-weight: 600;
+  }
+}
