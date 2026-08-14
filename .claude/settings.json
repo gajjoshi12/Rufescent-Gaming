@@ -44,7 +44,11 @@
       "PowerShell(Get-Process -Name node -ErrorAction SilentlyContinue | Stop-Process -Force; Start-Sleep -Seconds 2; $n = \\(Get-Process -Name node -ErrorAction SilentlyContinue | Measure-Object\\).Count; Write-Output \"node processes remaining: $n\")",
       "Bash(rm -f __shots.mjs __overflow.mjs __flows.mjs __favicon.mjs dev.log tsconfig.tsbuildinfo)",
       "Bash(rm -rf .next)",
-      "Bash(npm uninstall *)"
+      "Bash(npm uninstall *)",
+      "Bash(awk '{print $1}')",
+      "Bash(git commit *)",
+      "Bash(git ls-tree *)",
+      "Bash(git commit -q -m 'Record Claude Code permission allowlist entries from this session *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"
