@@ -14,6 +14,7 @@ import {
   Button,
   EmptyState,
   Input,
+  LivePip,
   SectionHeading,
   Segmented,
 } from "@/components/ui/primitives";
@@ -354,6 +355,70 @@ function CasinoLobby() {
             </div>
           </div>
         </div>
+      </Section>
+
+      {/* ---------- Poker room ----------
+          The sidebar entry for poker is xl-only, so this banner is the
+          sole route into the poker room on a phone. Keep it above the
+          category filters, where it can't be scrolled past. */}
+      <Section aria-label="Poker room">
+        <Link
+          href="/casino/poker"
+          className="group relative block overflow-hidden rounded-2xl border border-gold-400/25 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-400/50"
+        >
+          <span
+            aria-hidden="true"
+            className="absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 75% 90% at 22% 25%, #6d1f24 0%, #3a1014 48%, #1a0609 100%)",
+            }}
+          />
+          <span
+            aria-hidden="true"
+            className="absolute -right-10 -top-14 size-52 rounded-full bg-gold-500/18 blur-[70px]"
+          />
+
+          <span className="relative flex items-center gap-3.5 p-4 sm:gap-5 sm:p-5">
+            <span
+              aria-hidden="true"
+              className="grid size-12 shrink-0 place-items-center rounded-xl border border-gold-400/35 bg-obsidian-950/60 text-2xl sm:size-14 sm:text-3xl"
+            >
+              ♠
+            </span>
+
+            <span className="min-w-0 flex-1">
+              <span className="mb-1 flex flex-wrap items-center gap-1.5">
+                <Badge tone="gold">Poker room</Badge>
+                <Badge tone="live">
+                  <LivePip />
+                  Tables running
+                </Badge>
+              </span>
+              <span className="block font-display text-base font-semibold text-white sm:text-lg">
+                Tournaments &amp; cash games
+              </span>
+              <span className="mt-0.5 block text-xs leading-relaxed text-white/50">
+                Texas Hold&rsquo;em against other players — ₹1Cr guaranteed on the Ember Millions.
+              </span>
+            </span>
+
+            <span
+              aria-hidden="true"
+              className="grid size-8 shrink-0 place-items-center rounded-full border border-gold-400/30 text-gold-200 transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              <svg viewBox="0 0 16 16" className="size-3.5" fill="none">
+                <path
+                  d="M6 3.5L10.5 8L6 12.5"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </span>
+        </Link>
       </Section>
 
       {/* ---------- Filters ---------- */}

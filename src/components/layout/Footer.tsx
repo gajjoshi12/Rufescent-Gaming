@@ -75,6 +75,7 @@ export function Footer() {
               { label: "Sports betting", href: "/sports" },
               { label: "In-play", href: "/sports/live" },
               { label: "Casino", href: "/casino" },
+              { label: "Poker room", href: "/casino/poker" },
               { label: "Fantasy", href: "/fantasy" },
             ]}
           />
