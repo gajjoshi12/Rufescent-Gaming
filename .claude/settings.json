@@ -48,7 +48,20 @@
       "Bash(awk '{print $1}')",
       "Bash(git commit *)",
       "Bash(git ls-tree *)",
-      "Bash(git commit -q -m 'Record Claude Code permission allowlist entries from this session *)"
+      "Bash(git commit -q -m 'Record Claude Code permission allowlist entries from this session *)",
+      "Bash(git rev-list *)",
+      "Bash(awk '{print \"behind remote: \"$1\"   ahead of remote: \"$2}')",
+      "Bash(git merge *)",
+      "Bash(npm ci *)",
+      "Bash(echo \"=== install exit: $? ===\")",
+      "Bash(curl -s https://api.github.com/repos/gajjoshi12/Rufescent-Gaming)",
+      "Bash(node -e \"let s='';process.stdin.on\\('data',d=>s+=d\\).on\\('end',\\(\\)=>{const r=JSON.parse\\(s\\);console.log\\('name:',r.full_name\\);console.log\\('private:',r.private\\);console.log\\('DEFAULT BRANCH:',r.default_branch\\);console.log\\('pushed_at:',r.pushed_at\\);console.log\\('size KB:',r.size\\);}\\)\")",
+      "Bash(echo \"lint exit=$?\")",
+      "Bash(npm i *)",
+      "Bash(node ./__poker.mjs __TRACKED_VAR__/poker)",
+      "Bash(sed -i 's|export { seatPosition };|export { seatOffsets };|' src/components/poker/PokerTable.tsx)",
+      "Bash(sed -i 's|\"w-\\\\[6.5rem\\\\] sm:w-32\",|\"w-[5.5rem] sm:w-32\",|' src/components/poker/PokerTable.tsx)",
+      "Bash(git commit -q -m 'Record Claude Code permission entries from the poker session *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"
