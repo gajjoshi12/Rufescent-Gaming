@@ -61,7 +61,14 @@
       "Bash(node ./__poker.mjs __TRACKED_VAR__/poker)",
       "Bash(sed -i 's|export { seatPosition };|export { seatOffsets };|' src/components/poker/PokerTable.tsx)",
       "Bash(sed -i 's|\"w-\\\\[6.5rem\\\\] sm:w-32\",|\"w-[5.5rem] sm:w-32\",|' src/components/poker/PokerTable.tsx)",
-      "Bash(git commit -q -m 'Record Claude Code permission entries from the poker session *)"
+      "Bash(git commit -q -m 'Record Claude Code permission entries from the poker session *)",
+      "Bash(curl -s -L --max-time 25 \"https://rufescent-gaming-app.vercel.app/casino/poker\")",
+      "Bash(curl -s -o /dev/null -w \"pt-01: %{http_code}\\\\n\" -L --max-time 25 \"https://rufescent-gaming-app.vercel.app/casino/poker/pt-01\")",
+      "Bash(curl -s -o /dev/null -w \"bogus: %{http_code}\\\\n\" -L --max-time 25 \"https://rufescent-gaming-app.vercel.app/casino/poker/nope-not-real\")",
+      "Bash(mkdir -p __TRACKED_VAR__/nav)",
+      "Bash(node ./__nav.mjs __TRACKED_VAR__/nav)",
+      "Bash(rm -f __nav.mjs dev.log)",
+      "Bash(git commit -q -m 'Record Claude Code permission entries *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"
