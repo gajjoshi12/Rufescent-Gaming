@@ -28,6 +28,7 @@ export const SPORT_NAV: { key: SportKey; label: string; icon: string }[] = [
 
 export const SECONDARY_NAV: NavItem[] = [
   { href: "/sports/live", label: "In-play", icon: "◉", match: "/sports/live" },
+  { href: "/casino/poker", label: "Poker room", icon: "♠", match: "/casino/poker" },
   { href: "/promotions", label: "Promotions", icon: "★", match: "/promotions" },
   { href: "/responsible-gambling", label: "Responsible play", icon: "✦", match: "/responsible-gambling" },
 ];

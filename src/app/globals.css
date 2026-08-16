@@ -75,6 +75,8 @@
   --animate-odds-down: odds-flash-down 0.9s ease-out;
   --animate-marquee: marquee 40s linear infinite;
   --animate-glow-drift: glow-drift 14s ease-in-out infinite alternate;
+  --animate-act-timer: act-timer 15s linear forwards;
+  --animate-chip-in: chip-in 0.45s var(--ease-out-expo) both;
 }
 
 @keyframes shimmer {
@@ -108,6 +110,17 @@
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
+}
+/* Countdown ring on the seat that is to act. 100.5 is the circumference
+   of the r=16 circle it is applied to. */
+@keyframes act-timer {
+  from { stroke-dashoffset: 0; stroke: var(--color-gold-300); }
+  70%  { stroke: var(--color-gold-400); }
+  to   { stroke-dashoffset: 100.5; stroke: var(--color-loss); }
+}
+@keyframes chip-in {
+  from { opacity: 0; transform: translateY(-14px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes glow-drift {
   from { transform: translate3d(-6%, -4%, 0) scale(1); }
