@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/primitives";
 import { Sheet, Toast } from "@/components/ui/Sheet";
 import { GameArt, GameRail, useJackpotDrift } from "@/components/casino/GameCard";
+import { SlotMachine } from "@/components/slots/SlotMachine";
+import { findSlot } from "@/lib/slots/games";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { useSession } from "@/store/session";
 
@@ -31,6 +33,7 @@ export default function GamePage({ params }: { params: Promise<{ slug: string }>
 function GameView({ slug }: { slug: string }) {
   const { data: game, loading } = useAsync(() => api.casino.game(slug), [slug]);
   const { data: related } = useAsync(() => api.casino.related(slug, 8), [slug]);
+  const slotConfig = findSlot(slug);
 
   if (loading) return <GameSkeleton />;
   if (!game) notFound();
@@ -42,25 +45,67 @@ function GameView({ slug }: { slug: string }) {
       <Shell slip={false}>
         <Hero game={game} />
 
-        <DemoPanel game={game} />
+        {/* Games with a real math model behind them get the full cabinet;
+            the rest fall back to the placeholder reel. */}
+        {slotConfig ? (
+          <Section aria-label={`${game.name} game`}>
+            <SlotMachine config={slotConfig} />
+          </Section>
+        ) : (
+          <DemoPanel game={game} />
+        )}
 
         <Section aria-label="Game information">
           <SectionHeading title="Game details" icon="◇" />
+          {/* When a real math model backs the game, it is the source of
+              truth — the catalogue metadata is marketing copy and would
+              otherwise contradict the figures printed on the cabinet. */}
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
-            <StatTile label="RTP" value={`${game.rtp.toFixed(2)}%`} tone="gold" hint="Return to player" />
+            <StatTile
+              label="RTP"
+              value={`${(slotConfig?.rtp ?? game.rtp).toFixed(2)}%`}
+              tone="gold"
+              hint={slotConfig ? "Verified by simulation" : "Return to player"}
+            />
             <StatTile
               label="Volatility"
-              value={<span className="capitalize">{game.volatility}</span>}
-              hint={VOLATILITY_HINT[game.volatility]}
+              value={<span className="capitalize">{slotConfig?.volatility ?? game.volatility}</span>}
+              hint={VOLATILITY_HINT[slotConfig?.volatility ?? game.volatility]}
             />
-            <StatTile label="Max win" value={game.maxWin} tone="win" hint="Of your stake" />
             <StatTile
-              label={game.category === "slots" ? "Paylines" : "Seats"}
-              value={game.paylines ?? game.tableSeats ?? "—"}
-              hint={game.reels ?? (game.dealer ? `Dealer ${game.dealer}` : undefined)}
+              label="Max win"
+              value={slotConfig ? `${formatCompact(slotConfig.maxWin)}x` : game.maxWin}
+              tone="win"
+              hint="Of your stake"
             />
-            <StatTile label="Min bet" value={`${CURRENCY}${formatCompact(game.minBet)}`} />
-            <StatTile label="Max bet" value={`${CURRENCY}${formatCompact(game.maxBet)}`} />
+            <StatTile
+              label={slotConfig || game.category === "slots" ? "Paylines" : "Seats"}
+              value={slotConfig?.paylines.length ?? game.paylines ?? game.tableSeats ?? "—"}
+              hint={
+                slotConfig
+                  ? `${slotConfig.reels}x${slotConfig.rows}`
+                  : (game.reels ?? (game.dealer ? `Dealer ${game.dealer}` : undefined))
+              }
+            />
+            <StatTile
+              label="Min bet"
+              value={
+                slotConfig
+                  ? `${slotConfig.coinValues[0] * slotConfig.paylines.length} cr`
+                  : `${CURRENCY}${formatCompact(game.minBet)}`
+              }
+            />
+            <StatTile
+              label="Max bet"
+              value={
+                slotConfig
+                  ? `${formatCompact(
+                      slotConfig.coinValues[slotConfig.coinValues.length - 1] *
+                        slotConfig.paylines.length,
+                    )} cr`
+                  : `${CURRENCY}${formatCompact(game.maxBet)}`
+              }
+            />
           </div>
 
           <p className="mt-4 text-sm leading-relaxed text-white/60">{game.description}</p>
