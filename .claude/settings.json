@@ -68,7 +68,9 @@
       "Bash(mkdir -p __TRACKED_VAR__/nav)",
       "Bash(node ./__nav.mjs __TRACKED_VAR__/nav)",
       "Bash(rm -f __nav.mjs dev.log)",
-      "Bash(git commit -q -m 'Record Claude Code permission entries *)"
+      "Bash(git commit -q -m 'Record Claude Code permission entries *)",
+      "Bash(npx tsx *)",
+      "Bash(sed -i 's/strips: buildStrips\\(\"[a-z-]*\"\\),/strips: buildStrips\\(\\),/' src/lib/slots/games.ts)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Gaj\\Desktop\\Rufescent-Gaming\\rufescent"
