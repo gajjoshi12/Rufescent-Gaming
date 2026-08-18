@@ -22,6 +22,8 @@ import { Sheet, Toast } from "@/components/ui/Sheet";
 import { GameArt, GameRail, useJackpotDrift } from "@/components/casino/GameCard";
 import { SlotMachine } from "@/components/slots/SlotMachine";
 import { findSlot } from "@/lib/slots/games";
+import { OriginalGame } from "@/components/originals/OriginalGame";
+import { findOriginal, originalRtp } from "@/lib/originals/games";
 import { Skeleton } from "@/components/ui/Skeletons";
 import { useSession } from "@/store/session";
 
@@ -34,6 +36,7 @@ function GameView({ slug }: { slug: string }) {
   const { data: game, loading } = useAsync(() => api.casino.game(slug), [slug]);
   const { data: related } = useAsync(() => api.casino.related(slug, 8), [slug]);
   const slotConfig = findSlot(slug);
+  const originalConfig = findOriginal(slug);
 
   if (loading) return <GameSkeleton />;
   if (!game) notFound();
@@ -47,7 +50,11 @@ function GameView({ slug }: { slug: string }) {
 
         {/* Games with a real math model behind them get the full cabinet;
             the rest fall back to the placeholder reel. */}
-        {slotConfig ? (
+        {originalConfig ? (
+          <Section aria-label={`${game.name} game`} id="demo-heading">
+            <OriginalGame config={originalConfig} />
+          </Section>
+        ) : slotConfig ? (
           <Section aria-label={`${game.name} game`}>
             <SlotMachine config={slotConfig} />
           </Section>
@@ -63,47 +70,77 @@ function GameView({ slug }: { slug: string }) {
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
             <StatTile
               label="RTP"
-              value={`${(slotConfig?.rtp ?? game.rtp).toFixed(2)}%`}
+              value={`${(originalConfig ? originalRtp(originalConfig) : (slotConfig?.rtp ?? game.rtp)).toFixed(2)}%`}
               tone="gold"
-              hint={slotConfig ? "Verified by simulation" : "Return to player"}
+              hint={
+                originalConfig
+                  ? "Derived from the house edge"
+                  : slotConfig
+                    ? "Verified by simulation"
+                    : "Return to player"
+              }
             />
             <StatTile
               label="Volatility"
-              value={<span className="capitalize">{slotConfig?.volatility ?? game.volatility}</span>}
-              hint={VOLATILITY_HINT[slotConfig?.volatility ?? game.volatility]}
+              value={
+                <span className="capitalize">
+                  {originalConfig?.volatility ?? slotConfig?.volatility ?? game.volatility}
+                </span>
+              }
+              hint={
+                VOLATILITY_HINT[
+                  originalConfig?.volatility ?? slotConfig?.volatility ?? game.volatility
+                ]
+              }
             />
             <StatTile
               label="Max win"
-              value={slotConfig ? `${formatCompact(slotConfig.maxWin)}x` : game.maxWin}
+              value={
+                originalConfig
+                  ? `${formatCompact(originalConfig.maxWin)}x`
+                  : slotConfig
+                    ? `${formatCompact(slotConfig.maxWin)}x`
+                    : game.maxWin
+              }
               tone="win"
               hint="Of your stake"
             />
             <StatTile
-              label={slotConfig || game.category === "slots" ? "Paylines" : "Seats"}
-              value={slotConfig?.paylines.length ?? game.paylines ?? game.tableSeats ?? "—"}
+              label={originalConfig ? "House edge" : slotConfig || game.category === "slots" ? "Paylines" : "Seats"}
+              value={
+                originalConfig
+                  ? `${(originalConfig.edge * 100).toFixed(1)}%`
+                  : (slotConfig?.paylines.length ?? game.paylines ?? game.tableSeats ?? "—")
+              }
               hint={
-                slotConfig
-                  ? `${slotConfig.reels}x${slotConfig.rows}`
-                  : (game.reels ?? (game.dealer ? `Dealer ${game.dealer}` : undefined))
+                originalConfig
+                  ? "Fixed across every setting"
+                  : slotConfig
+                    ? `${slotConfig.reels}x${slotConfig.rows}`
+                    : (game.reels ?? (game.dealer ? `Dealer ${game.dealer}` : undefined))
               }
             />
             <StatTile
               label="Min bet"
               value={
-                slotConfig
-                  ? `${slotConfig.coinValues[0] * slotConfig.paylines.length} cr`
-                  : `${CURRENCY}${formatCompact(game.minBet)}`
+                originalConfig
+                  ? `${CURRENCY}${originalConfig.minBet}`
+                  : slotConfig
+                    ? `${slotConfig.coinValues[0] * slotConfig.paylines.length} cr`
+                    : `${CURRENCY}${formatCompact(game.minBet)}`
               }
             />
             <StatTile
               label="Max bet"
               value={
-                slotConfig
-                  ? `${formatCompact(
-                      slotConfig.coinValues[slotConfig.coinValues.length - 1] *
-                        slotConfig.paylines.length,
-                    )} cr`
-                  : `${CURRENCY}${formatCompact(game.maxBet)}`
+                originalConfig
+                  ? `${CURRENCY}${formatCompact(originalConfig.maxBet)}`
+                  : slotConfig
+                    ? `${formatCompact(
+                        slotConfig.coinValues[slotConfig.coinValues.length - 1] *
+                          slotConfig.paylines.length,
+                      )} cr`
+                    : `${CURRENCY}${formatCompact(game.maxBet)}`
               }
             />
           </div>

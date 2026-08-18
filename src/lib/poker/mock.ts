@@ -155,7 +155,7 @@ const SEEDS: TournamentSeed[] = [
     playersLeft: 2310, offsetMs: 2 * HOUR + 20 * MIN, status: "registering", currentLevel: 1,
     levelMinutes: 10, startSb: 50, seatsPerTable: 9,
     tags: ["Beginner", "Low stakes", "Huge field"],
-    description: "A hundred-rupee entry into a six-figure pool. The friendliest way into tournament poker.",
+    description: "A hundred-dirham entry into a six-figure pool. The friendliest way into tournament poker.",
   },
   {
     id: "pt-07", name: "Crimson Heads-Up", format: "sng", buyIn: 2000, fee: 150,

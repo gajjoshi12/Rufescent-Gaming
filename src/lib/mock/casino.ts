@@ -62,6 +62,9 @@ export const CASINO_CATEGORIES: CasinoCategoryMeta[] = [
    ============================================================ */
 
 const PROVIDER_META: { id: string; name: string; hue: number }[] = [
+  // The house studio sorts first: these are the only titles with a real
+  // engine in the bundle rather than catalogue metadata.
+  { id: "pv-rufescent", name: "Rufescent Originals", hue: 6 },
   { id: "pv-aurelia", name: "Aurelia Studios", hue: 14 },
   { id: "pv-nocturne", name: "Nocturne Interactive", hue: 268 },
   { id: "pv-pyre", name: "Pyre & Quill", hue: 32 },
@@ -424,34 +427,44 @@ const CATALOGUE: CasinoGame[] = [
     description: "Seven-card pai gow poker with a house-way auto-set button and a fortune bonus side bet.",
   },
 
-  /* ---------- Crash & instant ---------- */
+  /* ---------- Crash & instant ----------
+     Everything below is a Rufescent Original: a real engine ships with
+     the app rather than a licensed title, so the figures here are read
+     off `src/lib/originals/games.ts` instead of invented. */
   {
-    id: "cg-46", slug: "skyfall-multiplier", name: "Skyfall Multiplier", provider: "Tidewater Play",
+    id: "cg-46", slug: "ember-aviator", name: "Ember Aviator", provider: "Rufescent Originals",
     category: "crash", rtp: 97.0, volatility: "high", maxWin: "10,000x",
-    minBet: 10, maxBet: 25_000, hue: 194,
+    minBet: 5, maxBet: 25_000, hue: 8,
     tags: ["Crash", "Provably Fair", "Auto Cash Out"], isHot: true,
-    description: "The curve climbs until it doesn't. Set an auto cash-out, split your stake across two bets, and watch the live player feed.",
+    description: "The curve climbs from 1.00x until it burns out. Set an auto cash-out, watch the rest of the cabin bail, and decide how long to stay on board.",
   },
   {
-    id: "cg-47", slug: "rocket-rupee", name: "Rocket Rupee", provider: "Grifon Interactive",
-    category: "crash", rtp: 96.5, volatility: "high", maxWin: "5,000x",
-    minBet: 10, maxBet: 20_000, hue: 331,
-    tags: ["Crash", "Provably Fair", "Fast Rounds"], isNew: true,
-    description: "A six-second crash round with a shared chat and public cash-out ticker. Every seed is published after the round settles.",
+    id: "cg-47", slug: "molten-mines", name: "Molten Mines", provider: "Rufescent Originals",
+    category: "instant", rtp: 97.0, volatility: "medium", maxWin: "24,000x",
+    minBet: 5, maxBet: 15_000, hue: 152,
+    tags: ["Mines", "Provably Fair", "Instant"], isHot: true,
+    description: "Bury between one and twenty-four mines across a 5×5 grid, then lift tiles for as long as your nerve holds. Every safe tile steepens the ladder.",
   },
   {
-    id: "cg-48", slug: "mine-runner", name: "Mine Runner", provider: "Vantablack Labs",
+    id: "cg-48", slug: "prism-plinko", name: "Prism Plinko", provider: "Rufescent Originals",
     category: "instant", rtp: 97.0, volatility: "medium", maxWin: "1,000x",
-    minBet: 10, maxBet: 15_000, hue: 108,
-    tags: ["Mines", "Provably Fair", "Instant"],
-    description: "Pick safe tiles across a 5×5 grid and cash out before you hit a mine. You choose how many mines are buried.",
+    minBet: 5, maxBet: 12_000, hue: 274,
+    tags: ["Plinko", "Instant", "Auto Play"], isNew: true,
+    description: "Drop a bead through eight, twelve or sixteen pin rows and take whatever slot it settles in. Three risk profiles reshape the payout curve.",
   },
   {
-    id: "cg-49", slug: "plinko-prism", name: "Plinko Prism", provider: "Aurelia Studios",
-    category: "instant", rtp: 97.2, volatility: "medium", maxWin: "1,200x",
-    minBet: 10, maxBet: 12_000, hue: 245,
-    tags: ["Plinko", "Instant", "Auto Play"],
-    description: "Drop a bead through eight to sixteen pin rows and take whatever slot it settles in. Three risk profiles reshape the payout curve.",
+    id: "cg-49", slug: "dune-dice", name: "Dune Dice", provider: "Rufescent Originals",
+    category: "instant", rtp: 97.0, volatility: "low", maxWin: "48x",
+    minBet: 5, maxBet: 20_000, hue: 42,
+    tags: ["Dice", "Provably Fair", "Custom Odds"], isNew: true,
+    description: "Set your own win chance anywhere from 2% to 98% and roll against it. The house edge is fixed, so the price of every line is honest.",
+  },
+  {
+    id: "cg-50", slug: "gilded-wheel", name: "Gilded Wheel", provider: "Rufescent Originals",
+    category: "instant", rtp: 97.0, volatility: "high", maxWin: "19.4x",
+    minBet: 5, maxBet: 10_000, hue: 196,
+    tags: ["Wheel", "Provably Fair", "Instant"], isNew: true,
+    description: "Twenty segments and one fixed pointer. Low risk pays small and often; high risk leaves a single live segment on the rim.",
   },
 ];
 

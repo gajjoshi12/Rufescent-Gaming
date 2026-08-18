@@ -1131,7 +1131,7 @@ function PrizesTab({ contest }: { contest: FantasyContest }) {
         </p>
         <p>
           Ties are split equally across the tied ranks. Prize amounts are rounded to the nearest
-          rupee, so the distributed total can differ marginally from the advertised pool.
+          dirham, so the distributed total can differ marginally from the advertised pool.
         </p>
         <p className="text-white/35">
           Fantasy contests are games of skill. 18+ only.{" "}

@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import type { CasinoCategory, CasinoGame } from "@/lib/types";
 import { CURRENCY, cn, formatCompact, formatMoney } from "@/lib/format";
 import { api } from "@/lib/api";
-import { CASINO_CATEGORIES } from "@/lib/mock/casino";
+import { CASINO_CATEGORIES, CASINO_GAMES } from "@/lib/mock/casino";
 import { useAsync } from "@/lib/hooks";
 import { Rail, Section, Shell } from "@/components/layout/Shell";
 import {
@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/primitives";
 import { GameGridSkeleton, LoadingRegion, Skeleton } from "@/components/ui/Skeletons";
 import { GameCard, GameRail, LiveTableCard, useJackpotDrift } from "@/components/casino/GameCard";
+import { OriginalsShowcase } from "@/components/originals/OriginalCard";
 
 type CategoryFilter = "all" | CasinoCategory;
 
@@ -300,7 +301,7 @@ function CasinoLobby() {
     <EmptyState
       icon="🎲"
       title="Nothing matches those filters"
-      message="Try a different studio, category or search term — the catalogue has 49 titles waiting."
+      message={`Try a different studio, category or search term — the catalogue has ${CASINO_GAMES.length} titles waiting.`}
       action={
         <Button variant="subtle" size="sm" onClick={resetAll}>
           Clear all filters
@@ -331,7 +332,7 @@ function CasinoLobby() {
               </h1>
               <p className="mt-1.5 max-w-md text-sm text-white/45">
                 Slots, live dealer tables, crash and instant wins from ten studios. Every game is
-                playable in demo mode before you stake a rupee.
+                playable in demo mode before you stake a dirham.
               </p>
 
               <div className="mt-4 max-w-sm">
@@ -420,6 +421,12 @@ function CasinoLobby() {
           </span>
         </Link>
       </Section>
+
+      {/* ---------- House games ----------
+          The Originals ship with a real engine rather than catalogue
+          metadata, so they get their own drawn tiles above the filters
+          instead of competing with 45 generated gradients below them. */}
+      {discovery && <OriginalsShowcase />}
 
       {/* ---------- Filters ---------- */}
       <Section aria-label="Filters">

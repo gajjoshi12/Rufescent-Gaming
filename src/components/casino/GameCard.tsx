@@ -174,7 +174,7 @@ export function GameArt({
    Progressive jackpot drift
 
    Starts at the seeded base value so hydration matches, then
-   climbs on rAF. State only updates when the whole-rupee figure
+   climbs on rAF. State only updates when the whole-dirham figure
    actually changes, which keeps a grid of tickers cheap.
    ============================================================ */
 

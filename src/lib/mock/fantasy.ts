@@ -349,7 +349,7 @@ const LEADERBOARD_SEED: [user: string, teamName: string][] = [
   ["stumped_it", "Behind The Sticks"],
 ];
 
-/** Prize ladder for the flagship mega contest, in rupees. */
+/** Prize ladder for the flagship mega contest, in dirhams. */
 function prizeForRank(rank: number): number {
   if (rank === 1) return 1_000_000;
   if (rank === 2) return 400_000;
