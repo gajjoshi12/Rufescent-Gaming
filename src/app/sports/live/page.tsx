@@ -207,7 +207,7 @@ function LiveScoreboard({ match, mode }: { match: Match; mode: BoardMode }) {
               <div className="min-w-0">
                 <p className="truncate text-[0.6875rem] font-medium text-white/55">{market.name}</p>
                 <p className="text-[0.625rem] text-white/30">
-                  Matched <span className="tnum">₹{formatCompact(market.matched)}</span> ·{" "}
+                  Matched <span className="tnum">AED {formatCompact(market.matched)}</span> ·{" "}
                   <span className="tnum">+{match.marketCount}</span> markets
                 </p>
               </div>

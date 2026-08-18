@@ -399,7 +399,7 @@ function CasinoLobby() {
                 Tournaments &amp; cash games
               </span>
               <span className="mt-0.5 block text-xs leading-relaxed text-white/50">
-                Texas Hold&rsquo;em against other players — ₹1Cr guaranteed on the Ember Millions.
+                Texas Hold&rsquo;em against other players — AED 10M guaranteed on the Ember Millions.
               </span>
             </span>
 

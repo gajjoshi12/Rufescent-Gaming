@@ -223,7 +223,7 @@ export function StackBadge({ amount, bigBlind }: { amount: number; bigBlind: num
   return (
     <span className="flex items-baseline gap-1">
       <span className="text-[0.6875rem] font-semibold text-white tnum">
-        {amount.toLocaleString("en-IN")}
+        {amount.toLocaleString("en-AE")}
       </span>
       {bigBlind > 0 && (
         <span

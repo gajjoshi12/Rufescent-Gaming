@@ -114,7 +114,7 @@ const SEEDS: TournamentSeed[] = [
     startingStack: 30_000, guaranteed: 10_000_000, entrants: 1842, maxEntrants: 5000,
     playersLeft: 1842, offsetMs: 45 * MIN, status: "registering", currentLevel: 1,
     levelMinutes: 15, startSb: 100, seatsPerTable: 9,
-    tags: ["Featured", "₹1Cr GTD", "Deep stack"],
+    tags: ["Featured", "AED 10M GTD", "Deep stack"],
     description: "The flagship Sunday major. Thirty thousand starting chips, fifteen-minute levels and late registration open through level nine.",
   },
   {
@@ -171,7 +171,7 @@ const SEEDS: TournamentSeed[] = [
     playersLeft: 54, offsetMs: -6 * HOUR, status: "running", currentLevel: 1,
     levelMinutes: 0, startSb: 100, seatsPerTable: 6,
     tags: ["Cash game", "6-max", "Sit any time"],
-    description: "Blinds ₹100/₹200, buy in between fifty and two hundred big blinds, leave whenever you like.",
+    description: "Blinds AED 100/200, buy in between fifty and two hundred big blinds, leave whenever you like.",
   },
 ];
 

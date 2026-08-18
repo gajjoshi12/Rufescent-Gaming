@@ -167,7 +167,7 @@ export default function FantasyLobbyPage() {
                 <div>
                   <p className="text-[0.625rem] uppercase tracking-wider text-white/35">Rank</p>
                   <p className="font-display text-lg font-semibold text-white tnum">
-                    #{rank.toLocaleString("en-IN")}
+                    #{rank.toLocaleString("en-AE")}
                   </p>
                 </div>
                 <div className="text-right">

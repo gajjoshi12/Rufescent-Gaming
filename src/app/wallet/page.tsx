@@ -222,7 +222,10 @@ export default function WalletPage() {
               <Badge tone="gold">{user.tier}</Badge>
             </div>
 
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            {/* Two columns on a phone: "AED" plus a grouped figure will not
+                fit three ways at 390px, and Total already appears as the
+                hero figure directly above. */}
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
               <StatTile
                 label="Withdrawable"
                 value={<span className="tnum">{formatMoney(user.withdrawable, { decimals: false })}</span>}
@@ -233,20 +236,22 @@ export default function WalletPage() {
                 value={<span className="tnum">{formatMoney(user.bonusBalance, { decimals: false })}</span>}
                 tone="gold"
               />
-              <StatTile
-                label="Total"
-                value={<span className="tnum">{formatMoney(user.balance, { decimals: false })}</span>}
-              />
+              <div className="hidden sm:block">
+                <StatTile
+                  label="Total"
+                  value={<span className="tnum">{formatMoney(user.balance, { decimals: false })}</span>}
+                />
+              </div>
             </div>
 
             <div className="mt-5">
               <div className="flex items-baseline justify-between gap-3 text-[0.6875rem]">
                 <span className="text-white/45">
                   Loyalty ·{" "}
-                  <span className="tnum text-white/70">{user.loyaltyPoints.toLocaleString("en-IN")}</span> pts
+                  <span className="tnum text-white/70">{user.loyaltyPoints.toLocaleString("en-AE")}</span> pts
                 </span>
                 <span className="text-white/35">
-                  <span className="tnum">{pointsToGo.toLocaleString("en-IN")}</span> to {NEXT_TIER[user.tier]}
+                  <span className="tnum">{pointsToGo.toLocaleString("en-AE")}</span> to {NEXT_TIER[user.tier]}
                 </span>
               </div>
               <div
@@ -527,7 +532,7 @@ function DepositPanel({
           >
             <Input
               id={amountId}
-              prefix="₹"
+              prefix="AED "
               inputMode="decimal"
               autoComplete="off"
               placeholder="0.00"
@@ -746,7 +751,7 @@ function WithdrawPanel({
           >
             <Input
               id={amountId}
-              prefix="₹"
+              prefix="AED "
               inputMode="decimal"
               autoComplete="off"
               placeholder="0.00"

@@ -49,7 +49,7 @@ export const CURRENT_USER: User = {
   withdrawable: 31_240.5,
   kycStatus: "pending",
   memberSince: new Date(Date.UTC(2023, 10, 4)).toISOString(),
-  currency: "INR",
+  currency: "AED",
 };
 
 /* ============================================================
@@ -136,36 +136,36 @@ export const TRANSACTIONS: Transaction[] = (() => {
 
 export const PAYMENT_METHODS: PaymentMethod[] = [
   {
-    id: "pm-upi", label: "UPI", detail: "GPay, PhonePe, Paytm or any UPI ID",
-    icon: "📲", minAmount: 100, maxAmount: 200_000, eta: "Instant", feePct: 0,
+    id: "pm-card", label: "Visa / Mastercard", detail: "Debit and credit, 3-D Secure required",
+    icon: "💳", minAmount: 50, maxAmount: 30_000, eta: "Instant", feePct: 1.5,
   },
   {
-    id: "pm-netbanking", label: "Net Banking", detail: "58 Indian banks supported",
-    icon: "🏦", minAmount: 500, maxAmount: 500_000, eta: "2–10 minutes", feePct: 0,
+    id: "pm-applepay", label: "Apple Pay", detail: "Face ID or Touch ID confirmation",
+    icon: "📲", minAmount: 25, maxAmount: 20_000, eta: "Instant", feePct: 0,
   },
   {
-    id: "pm-visa", label: "Visa / Mastercard", detail: "Debit and credit, 3-D Secure required",
-    icon: "💳", minAmount: 500, maxAmount: 300_000, eta: "Instant", feePct: 1.5,
+    id: "pm-googlepay", label: "Google Pay", detail: "Any card saved to your Google account",
+    icon: "📱", minAmount: 25, maxAmount: 20_000, eta: "Instant", feePct: 0,
   },
   {
-    id: "pm-rupay", label: "RuPay Card", detail: "Domestic debit cards",
-    icon: "🪪", minAmount: 500, maxAmount: 150_000, eta: "Instant", feePct: 0.9,
+    id: "pm-bank", label: "Bank Transfer", detail: "UAE IBAN, local or international",
+    icon: "🏦", minAmount: 200, maxAmount: 150_000, eta: "1–3 business days", feePct: 0,
   },
   {
-    id: "pm-wallet", label: "Mobile Wallet", detail: "Paytm, Mobikwik and Freecharge balances",
-    icon: "👛", minAmount: 100, maxAmount: 100_000, eta: "Instant", feePct: 0.5,
-  },
-  {
-    id: "pm-bank", label: "Bank Transfer", detail: "NEFT, RTGS or IMPS to your verified account",
-    icon: "🧾", minAmount: 1_000, maxAmount: 1_000_000, eta: "1–3 business days", feePct: 0,
+    id: "pm-wallet", label: "Mobile Wallet", detail: "Careem Pay and e& money balances",
+    icon: "👛", minAmount: 25, maxAmount: 10_000, eta: "Instant", feePct: 0.5,
   },
   {
     id: "pm-usdt", label: "USDT", detail: "TRC-20 network, 12 confirmations",
-    icon: "🪙", minAmount: 800, maxAmount: 2_000_000, eta: "10–30 minutes", feePct: 0,
+    icon: "🪙", minAmount: 100, maxAmount: 250_000, eta: "10–30 minutes", feePct: 0,
+  },
+  {
+    id: "pm-skrill", label: "Skrill", detail: "E-wallet, multi-currency",
+    icon: "💱", minAmount: 50, maxAmount: 40_000, eta: "Instant", feePct: 1.0,
   },
   {
     id: "pm-voucher", label: "Cash Voucher", detail: "Prepaid PIN from a partner retailer",
-    icon: "🎟️", minAmount: 200, maxAmount: 25_000, eta: "Instant", feePct: 2.5,
+    icon: "🎟️", minAmount: 25, maxAmount: 3_000, eta: "Instant", feePct: 2.5,
   },
 ];
 
@@ -199,7 +199,7 @@ export const KYC_DOCUMENTS: KycDocument[] = [
   {
     id: "kyc-funds",
     label: "Source of Funds",
-    description: "Only requested for cumulative withdrawals above ₹10,00,000 in a calendar year.",
+    description: "Only requested for cumulative withdrawals above AED 1,000,000 in a calendar year.",
     required: false,
     accepts: "PDF · max 12MB",
     status: "not_started",

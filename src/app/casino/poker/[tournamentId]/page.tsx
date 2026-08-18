@@ -88,10 +88,10 @@ function TableView({ tournamentId }: { tournamentId: string }) {
               <div className="grid grid-cols-2 gap-2">
                 <StatTile
                   label="Prize pool"
-                  value={`₹${formatCompact(tournament.prizePool)}`}
+                  value={`AED ${formatCompact(tournament.prizePool)}`}
                   tone="gold"
                 />
-                <StatTile label="Left" value={tournament.playersLeft.toLocaleString("en-IN")} />
+                <StatTile label="Left" value={tournament.playersLeft.toLocaleString("en-AE")} />
                 <StatTile label="Avg stack" value={formatCompact(tournament.averageStack)} />
                 <StatTile
                   label="Your stack"

@@ -220,7 +220,7 @@ export default function LandingPage() {
                   {contest.matchLabel}
                 </p>
                 <p className="font-display text-xl font-semibold text-gilt tnum">
-                  ₹{formatCompact(contest.prizePool)}
+                  AED {formatCompact(contest.prizePool)}
                 </p>
                 <p className="mb-3 text-[0.6875rem] text-white/40">Prize pool</p>
 
@@ -232,7 +232,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex items-center justify-between text-[0.625rem]">
                   <span className="text-white/35 tnum">
-                    {(contest.totalSpots - contest.filledSpots).toLocaleString("en-IN")} spots left
+                    {(contest.totalSpots - contest.filledSpots).toLocaleString("en-AE")} spots left
                   </span>
                   <span className="font-semibold text-gold-300 tnum">
                     {contest.entryFee === 0 ? "Free" : formatMoney(contest.entryFee, { decimals: false })}
@@ -333,7 +333,7 @@ function ExchangeExplainer() {
     {
       side: "back" as const,
       title: "Backing",
-      body: "You're betting something will happen. Stake ₹100 at 2.50 and you win ₹150 profit if it does.",
+      body: "You're betting something will happen. Stake AED 100 at 2.50 and you win AED 150 profit if it does.",
       tone: "border-back-500/25 bg-back-900/25 text-back-100",
       chip: "bg-back-700 text-back-100",
     },

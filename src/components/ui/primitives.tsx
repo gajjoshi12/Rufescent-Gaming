@@ -313,7 +313,8 @@ export const Input = forwardRef<
           "transition-colors duration-200 outline-none",
           "focus:border-gold-400/50 focus:bg-obsidian-850",
           invalid ? "border-loss/60" : "border-white/10 hover:border-white/18",
-          prefix && "pl-8",
+          // Wide enough for a three-letter ISO code, not just a glyph.
+          prefix && "pl-13",
           className,
         )}
         {...rest}
@@ -453,7 +454,11 @@ export function StatTile({
   return (
     <div className="glass-soft rounded-xl px-3.5 py-3">
       <p className="text-[0.625rem] font-medium uppercase tracking-wider text-white/40">{label}</p>
-      <p className={cn("mt-1 font-display text-lg font-semibold tnum", valueTone)}>{value}</p>
+      {/* Steps down a size on narrow columns: a three-letter currency
+          code plus a grouped figure overflows a 1/3-width tile. */}
+      <p className={cn("mt-1 font-display text-base font-semibold sm:text-lg tnum", valueTone)}>
+        {value}
+      </p>
       {hint && <p className="mt-0.5 text-[0.6875rem] text-white/35">{hint}</p>}
     </div>
   );

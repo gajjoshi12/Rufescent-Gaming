@@ -390,7 +390,7 @@ function DemoPanel({ game }: { game: CasinoGame }) {
             <span className="text-white/40">
               Demo credits{" "}
               <span aria-live="polite" className="font-semibold text-gold-300 tnum">
-                {credits.toLocaleString("en-IN")}
+                {credits.toLocaleString("en-AE")}
               </span>
             </span>
             <button
@@ -408,7 +408,7 @@ function DemoPanel({ game }: { game: CasinoGame }) {
 
           {spent > 0 && (
             <p className="mt-2 text-[0.625rem] text-white/30 tnum">
-              Demo turnover this session: {spent.toLocaleString("en-IN")} credits
+              Demo turnover this session: {spent.toLocaleString("en-AE")} credits
             </p>
           )}
         </div>

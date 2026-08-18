@@ -76,8 +76,8 @@ export default function PokerLobbyPage() {
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-white">{tournament.name}</p>
                     <p className="text-[0.6875rem] text-white/40 tnum">
-                      Rank {seat.rank} of {tournament.playersLeft.toLocaleString("en-IN")} ·{" "}
-                      {seat.stack.toLocaleString("en-IN")} chips
+                      Rank {seat.rank} of {tournament.playersLeft.toLocaleString("en-AE")} ·{" "}
+                      {seat.stack.toLocaleString("en-AE")} chips
                     </p>
                   </div>
                   <span
@@ -185,13 +185,13 @@ function PokerHero({ tournament, now }: { tournament: Tournament; now: number | 
           <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
             <StatTile
               label="Guaranteed"
-              value={`₹${formatCompact(tournament.guaranteed)}`}
+              value={`AED ${formatCompact(tournament.guaranteed)}`}
               tone="gold"
             />
             <StatTile label="Buy-in" value={formatMoney(tournament.buyIn, { decimals: false })} />
             <StatTile
               label="Entrants"
-              value={tournament.entrants.toLocaleString("en-IN")}
+              value={tournament.entrants.toLocaleString("en-AE")}
               hint={`of ${formatCompact(tournament.maxEntrants)}`}
             />
             <StatTile
@@ -258,14 +258,14 @@ function TournamentRow({
           <p className="mt-0.5 text-[0.6875rem] text-white/40 tnum">
             {live ? (
               <>
-                {tournament.playersLeft.toLocaleString("en-IN")} left · Level{" "}
+                {tournament.playersLeft.toLocaleString("en-AE")} left · Level{" "}
                 {tournament.currentLevel} ({level.smallBlind}/{level.bigBlind}) · Avg{" "}
                 {formatCompact(tournament.averageStack)}
               </>
             ) : (
               <>
                 {now === null ? "—" : formatKickoff(tournament.startsAt, now)} ·{" "}
-                {tournament.startingStack.toLocaleString("en-IN")} chips ·{" "}
+                {tournament.startingStack.toLocaleString("en-AE")} chips ·{" "}
                 {level.duration}-min levels
               </>
             )}
@@ -287,7 +287,7 @@ function TournamentRow({
         <div className="flex shrink-0 items-center gap-4">
           <div className="text-right">
             <p className="font-display text-lg font-semibold text-gilt tnum">
-              ₹{formatCompact(tournament.prizePool)}
+              AED {formatCompact(tournament.prizePool)}
             </p>
             <p className="text-[0.625rem] text-white/35">
               {tournament.buyIn === 0
@@ -331,7 +331,7 @@ function TournamentDetail({
       open
       onClose={onClose}
       title={tournament.name}
-      description={`${tournament.startingStack.toLocaleString("en-IN")} starting chips · ${tournament.seatsPerTable}-max`}
+      description={`${tournament.startingStack.toLocaleString("en-AE")} starting chips · ${tournament.seatsPerTable}-max`}
       size="lg"
       footer={
         <LinkButton href={`/casino/poker/${tournament.id}`} variant="gold" fullWidth>
@@ -341,9 +341,9 @@ function TournamentDetail({
     >
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <StatTile label="Prize pool" value={`₹${formatCompact(tournament.prizePool)}`} tone="gold" />
-          <StatTile label="Entrants" value={tournament.entrants.toLocaleString("en-IN")} />
-          <StatTile label="Left" value={tournament.playersLeft.toLocaleString("en-IN")} />
+          <StatTile label="Prize pool" value={`AED ${formatCompact(tournament.prizePool)}`} tone="gold" />
+          <StatTile label="Entrants" value={tournament.entrants.toLocaleString("en-AE")} />
+          <StatTile label="Left" value={tournament.playersLeft.toLocaleString("en-AE")} />
           <StatTile
             label="Starts"
             value={now === null ? "—" : formatKickoff(tournament.startsAt, now)}
@@ -397,11 +397,11 @@ function TournamentDetail({
                       )}
                     </td>
                     <td className="py-1.5 pr-3 tnum text-white/80">
-                      {level.smallBlind.toLocaleString("en-IN")} /{" "}
-                      {level.bigBlind.toLocaleString("en-IN")}
+                      {level.smallBlind.toLocaleString("en-AE")} /{" "}
+                      {level.bigBlind.toLocaleString("en-AE")}
                     </td>
                     <td className="py-1.5 pr-3 tnum text-white/45">
-                      {level.ante ? level.ante.toLocaleString("en-IN") : "—"}
+                      {level.ante ? level.ante.toLocaleString("en-AE") : "—"}
                     </td>
                     <td className="py-1.5 tnum text-white/45">{level.duration}m</td>
                   </tr>

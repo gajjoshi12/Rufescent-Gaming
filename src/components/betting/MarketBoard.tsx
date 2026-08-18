@@ -62,7 +62,7 @@ export function MarketBoard({
         </span>
         <span className="flex shrink-0 items-center gap-2.5 text-[0.6875rem] text-white/35">
           <span className="hidden tnum sm:inline">
-            Matched ₹{formatCompact(market.matched)}
+            Matched AED {formatCompact(market.matched)}
           </span>
           <span className="tnum">{market.margin}%</span>
           <svg

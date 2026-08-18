@@ -91,7 +91,7 @@ export function PokerTable({
             <div className="flex flex-col items-center gap-1">
               <ChipStack amount={collectedPot} size="sm" showAmount={false} />
               <span className="rounded-full border border-gold-400/30 bg-obsidian-950/75 px-2.5 py-0.5 text-[0.6875rem] font-semibold text-gold-200 tnum backdrop-blur">
-                Pot {collectedPot.toLocaleString("en-IN")}
+                Pot {collectedPot.toLocaleString("en-AE")}
               </span>
             </div>
           )}

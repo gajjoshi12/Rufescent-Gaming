@@ -115,12 +115,16 @@ export function impliedProbability(decimal: number): number {
    Money & numbers
    ============================================================ */
 
-export const CURRENCY = "₹";
+/** Number grouping locale. Kept beside CURRENCY so they change together. */
+export const LOCALE = "en-AE";
+
+/** ISO code rather than a glyph: the dirham sign has patchy font support. */
+export const CURRENCY = "AED ";
 
 export function formatMoney(amount: number, opts: { decimals?: boolean; sign?: boolean } = {}): string {
   const { decimals = true, sign = false } = opts;
   const abs = Math.abs(amount);
-  const body = abs.toLocaleString("en-IN", {
+  const body = abs.toLocaleString(LOCALE, {
     minimumFractionDigits: decimals ? 2 : 0,
     maximumFractionDigits: decimals ? 2 : 0,
   });
@@ -128,10 +132,13 @@ export function formatMoney(amount: number, opts: { decimals?: boolean; sign?: b
   return `${prefix}${CURRENCY}${body}`;
 }
 
-/** Compact liquidity/prize figures: 12500 → "12.5K", 2400000 → "24L". */
+/**
+ * Compact figures: 12500 → "12.5K", 2_400_000 → "2.4M".
+ * Western grouping, not lakh/crore — the dirham is not read in those units.
+ */
 export function formatCompact(amount: number): string {
-  if (amount >= 10_000_000) return `${(amount / 10_000_000).toFixed(amount % 10_000_000 === 0 ? 0 : 1)}Cr`;
-  if (amount >= 100_000) return `${(amount / 100_000).toFixed(amount % 100_000 === 0 ? 0 : 1)}L`;
+  if (amount >= 1_000_000_000) return `${(amount / 1_000_000_000).toFixed(amount % 1_000_000_000 === 0 ? 0 : 1)}B`;
+  if (amount >= 1_000_000) return `${(amount / 1_000_000).toFixed(amount % 1_000_000 === 0 ? 0 : 1)}M`;
   if (amount >= 1_000) return `${(amount / 1_000).toFixed(amount % 1_000 === 0 ? 0 : 1)}K`;
   return `${Math.round(amount)}`;
 }

@@ -194,7 +194,7 @@ export function useTable(config: Config) {
           seat.lastAction = seat.player.stack === 0 ? "all-in" : "call";
           seat.lastActionAmount = owed;
           if (seat.player.stack === 0) seat.status = "all-in";
-          log.push(`${name} calls ${owed.toLocaleString("en-IN")}`);
+          log.push(`${name} calls ${owed.toLocaleString("en-AE")}`);
         } else {
           const target = Math.min(decision.to ?? 0, seat.committed + seat.player.stack);
           const delta = target - seat.committed;
@@ -209,8 +209,8 @@ export function useTable(config: Config) {
           currentBet = Math.max(currentBet, target);
           log.push(
             isAllIn
-              ? `${name} is all in for ${target.toLocaleString("en-IN")}`
-              : `${name} raises to ${target.toLocaleString("en-IN")}`,
+              ? `${name} is all in for ${target.toLocaleString("en-AE")}`
+              : `${name} raises to ${target.toLocaleString("en-AE")}`,
           );
         }
 
@@ -447,8 +447,8 @@ function award(previous: TableState, uncontested: boolean): TableState {
     const names = winners.map((w) => (w.player?.isHero ? "You" : w.player!.name.split(" ")[0]));
     log.push(
       uncontested
-        ? `${names[0]} wins ${pot.amount.toLocaleString("en-IN")} uncontested`
-        : `${names.join(" and ")} ${winners.length > 1 ? "split" : "wins"} ${pot.label.toLowerCase()} — ${pot.amount.toLocaleString("en-IN")}${winners[0].handLabel ? ` with ${winners[0].handLabel.toLowerCase()}` : ""}`,
+        ? `${names[0]} wins ${pot.amount.toLocaleString("en-AE")} uncontested`
+        : `${names.join(" and ")} ${winners.length > 1 ? "split" : "wins"} ${pot.label.toLowerCase()} — ${pot.amount.toLocaleString("en-AE")}${winners[0].handLabel ? ` with ${winners[0].handLabel.toLowerCase()}` : ""}`,
     );
   }
 

@@ -168,12 +168,12 @@ export default function ProfilePage() {
                 Loyalty points
               </p>
               <p className="mt-0.5 font-display text-xl font-semibold text-gilt tnum">
-                {user.loyaltyPoints.toLocaleString("en-IN")}
+                {user.loyaltyPoints.toLocaleString("en-AE")}
               </p>
             </div>
             <p className="text-right text-[0.6875rem] text-white/40">
               <span className="tnum">
-                {Math.max(0, user.nextTierAt - user.loyaltyPoints).toLocaleString("en-IN")}
+                {Math.max(0, user.nextTierAt - user.loyaltyPoints).toLocaleString("en-AE")}
               </span>{" "}
               to {NEXT_TIER[user.tier]}
             </p>

@@ -288,11 +288,11 @@ export function SlotMachine({ config }: { config: SlotConfig }) {
       {/* ---------- Controls ---------- */}
       <div className="relative border-t border-white/10 bg-obsidian-950/55 px-3 py-3 backdrop-blur sm:px-5">
         <div className="mb-2.5 grid grid-cols-3 gap-2 text-center">
-          <Meter label="Credits" value={credits.toLocaleString("en-IN")} tone="gold" />
-          <Meter label="Total bet" value={totalBet.toLocaleString("en-IN")} />
+          <Meter label="Credits" value={credits.toLocaleString("en-AE")} tone="gold" />
+          <Meter label="Total bet" value={totalBet.toLocaleString("en-AE")} />
           <Meter
             label="Last win"
-            value={outcome ? Math.round(outcome.totalWin).toLocaleString("en-IN") : "0"}
+            value={outcome ? Math.round(outcome.totalWin).toLocaleString("en-AE") : "0"}
             tone={outcome && outcome.totalWin > 0 ? "win" : "neutral"}
           />
         </div>
@@ -504,7 +504,7 @@ function WinBanner({
           className="font-display text-2xl font-bold tabular-nums sm:text-3xl"
           style={{ color: accent }}
         >
-          +{Math.round(outcome.totalWin).toLocaleString("en-IN")}
+          +{Math.round(outcome.totalWin).toLocaleString("en-AE")}
         </p>
         <p className="text-[0.625rem] text-white/50 tnum">
           {multiple.toFixed(2)}× bet
@@ -532,7 +532,7 @@ function ActiveLineCaption({
     <p className="text-[0.6875rem] text-white/55 tnum">
       {lineIndex === -1 ? "Scatter" : `Line ${lineIndex + 1}`} · {line.count}× {symbol.name} ·{" "}
       <span className="font-semibold text-gold-200">
-        +{Math.round(line.amount).toLocaleString("en-IN")}
+        +{Math.round(line.amount).toLocaleString("en-AE")}
       </span>
     </p>
   );

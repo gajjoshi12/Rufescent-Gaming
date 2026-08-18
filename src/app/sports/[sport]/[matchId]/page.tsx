@@ -362,7 +362,7 @@ function InfoPanel({
         <div className="grid grid-cols-3 gap-2 2xl:grid-cols-1">
           <StatTile
             label="Total matched"
-            value={<span className="tnum">₹{formatCompact(totalMatched)}</span>}
+            value={<span className="tnum">AED {formatCompact(totalMatched)}</span>}
             hint="Across every market"
             tone="gold"
           />

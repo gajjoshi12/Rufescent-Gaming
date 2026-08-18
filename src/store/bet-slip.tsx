@@ -169,7 +169,7 @@ export function BetSlipProvider({ children }: { children: React.ReactNode }) {
             : staked.length === 0
               ? "Enter a stake"
               : anyBelowMin
-                ? `Minimum stake is ₹${MIN_STAKE} per bet`
+                ? `Minimum stake is AED ${MIN_STAKE} per bet`
                 : null,
       };
     }
@@ -188,7 +188,7 @@ export function BetSlipProvider({ children }: { children: React.ReactNode }) {
         count < 2
           ? "A multi needs at least 2 selections"
           : stake < MIN_STAKE
-            ? `Minimum stake is ₹${MIN_STAKE}`
+            ? `Minimum stake is AED ${MIN_STAKE}`
             : null,
     };
   }, [selections, mode]);

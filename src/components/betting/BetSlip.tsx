@@ -184,8 +184,8 @@ function StakeInput({
 
   return (
     <div className="relative">
-      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-white/40">
-        ₹
+      <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xs font-medium text-white/40">
+        AED 
       </span>
       <input
         type="number"
@@ -201,7 +201,7 @@ function StakeInput({
           onChange(e.target.value === "" || Number.isNaN(parsed) ? undefined : parsed);
         }}
         className={cn(
-          "h-10 w-full rounded-lg border bg-obsidian-950/60 pl-7 pr-3 text-sm font-semibold text-white tnum",
+          "h-10 w-full rounded-lg border bg-obsidian-950/60 pl-12 pr-3 text-sm font-semibold text-white tnum",
           "outline-none transition-colors placeholder:font-normal placeholder:text-white/25",
           below ? "border-loss/60" : "border-white/12 focus:border-gold-400/50",
         )}

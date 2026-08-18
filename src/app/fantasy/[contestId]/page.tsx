@@ -1010,7 +1010,7 @@ export function prizeBands(contest: FantasyContest): PrizeBand[] {
 
   return [...head, ...tailBands].map((b) => ({
     ...b,
-    label: b.from === b.to ? ordinal(b.from) : `${b.from.toLocaleString("en-IN")} – ${b.to.toLocaleString("en-IN")}`,
+    label: b.from === b.to ? ordinal(b.from) : `${b.from.toLocaleString("en-AE")} – ${b.to.toLocaleString("en-AE")}`,
   }));
 }
 
@@ -1033,7 +1033,7 @@ function PrizesTab({ contest }: { contest: FantasyContest }) {
           <div className="text-right">
             <p className="text-[0.625rem] uppercase tracking-wider text-white/40">Winners</p>
             <p className="font-display text-lg font-semibold text-white tnum">
-              {winners.toLocaleString("en-IN")}
+              {winners.toLocaleString("en-AE")}
               <span className="ml-1 text-xs font-normal text-white/40">
                 ({contest.winnersPct}% of {formatCompact(contest.totalSpots)})
               </span>
@@ -1079,7 +1079,7 @@ function PrizesTab({ contest }: { contest: FantasyContest }) {
                     {band.label}
                   </th>
                   <td className="px-1 py-2.5 text-right text-white/50 tnum">
-                    {band.count.toLocaleString("en-IN")}
+                    {band.count.toLocaleString("en-AE")}
                   </td>
                   <td className="px-1 py-2.5 text-right font-semibold text-white/90 tnum">
                     {formatMoney(band.amount, { decimals: false })}

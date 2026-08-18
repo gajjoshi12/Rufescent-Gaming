@@ -80,7 +80,7 @@ const TIERS: {
     perks: [
       "7% weekly cashback",
       "Priority withdrawals — typically under 30 minutes",
-      "Monthly reload bonus up to ₹2,500",
+      "Monthly reload bonus up to AED 2,500",
     ],
   },
   {
@@ -89,7 +89,7 @@ const TIERS: {
     accent: "from-gold-200 to-gold-600",
     perks: [
       "10% weekly cashback",
-      "Higher accumulator boost ceiling (₹50,000)",
+      "Higher accumulator boost ceiling (AED 50,000)",
       "Named account manager and faster complaint handling",
       "Two free fantasy mega entries a month",
     ],
@@ -272,7 +272,7 @@ export default function PromotionsPage() {
             Loyalty tiers
           </h2>
           <p className="mt-0.5 text-xs text-white/45">
-            You earn one point per ₹100 staked, across every product. Tiers are reviewed monthly and
+            You earn one point per AED 100 staked, across every product. Tiers are reviewed monthly and
             never drop by more than one level at a time.
           </p>
         </div>
@@ -304,8 +304,8 @@ export default function PromotionsPage() {
 
                   {current && (
                     <p className="mt-3 text-[0.6875rem] text-gold-200">
-                      Your tier · {user.loyaltyPoints.toLocaleString("en-IN")} pts ·{" "}
-                      {Math.max(0, user.nextTierAt - user.loyaltyPoints).toLocaleString("en-IN")} to
+                      Your tier · {user.loyaltyPoints.toLocaleString("en-AE")} pts ·{" "}
+                      {Math.max(0, user.nextTierAt - user.loyaltyPoints).toLocaleString("en-AE")} to
                       the next level
                     </p>
                   )}

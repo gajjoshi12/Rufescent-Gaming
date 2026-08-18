@@ -159,7 +159,7 @@ export interface FantasyContest {
   totalSpots: number;
   filledSpots: number;
   winnersPct: number;
-  /** e.g. "₹10,000" */
+  /** e.g. "AED 10,000" */
   firstPrize: number;
   guaranteed: boolean;
   multiEntry: boolean;

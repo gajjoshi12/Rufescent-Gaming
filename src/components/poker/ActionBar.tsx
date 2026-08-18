@@ -103,7 +103,7 @@ export function ActionBar({
             <span className="flex items-center gap-1.5">
               <Chip value={raiseTo} size="xs" />
               <span className="font-display text-sm font-semibold text-gold-200 tnum">
-                {raiseTo.toLocaleString("en-IN")}
+                {raiseTo.toLocaleString("en-AE")}
               </span>
               <span className="text-[0.625rem] text-white/35 tnum">
                 {bigBlind > 0 ? `${(raiseTo / bigBlind).toFixed(1)}bb` : ""}
