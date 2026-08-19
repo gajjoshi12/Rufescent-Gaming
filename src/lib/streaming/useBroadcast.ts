@@ -79,6 +79,25 @@ export function useBroadcast() {
   const supported =
     ready && typeof navigator !== "undefined" && Boolean(navigator.mediaDevices?.getUserMedia);
 
+  /**
+   * Screen capture is a separate capability from camera capture.
+   *
+   * No iOS browser implements getDisplayMedia: Apple requires every iOS
+   * browser to use WebKit, so Chrome and Firefox on iPhone fail exactly as
+   * Safari does. Feature-detecting rather than sniffing keeps this correct
+   * if that ever changes.
+   */
+  const screenSupported =
+    ready && typeof navigator !== "undefined" && Boolean(navigator.mediaDevices?.getDisplayMedia);
+
+  /** Only used to explain *why* screen share is missing, never to gate it. */
+  const looksLikeIOS =
+    ready &&
+    typeof navigator !== "undefined" &&
+    (/iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      // iPadOS 13+ reports itself as a Mac, but a Mac has no touch points.
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
+
   /** Device labels stay empty until a permission has been granted once. */
   const refreshDevices = useCallback(async () => {
     if (typeof navigator === "undefined" || !navigator.mediaDevices?.enumerateDevices) return;
@@ -281,6 +300,8 @@ export function useBroadcast() {
   return {
     state,
     supported,
+    screenSupported,
+    looksLikeIOS,
     ready,
     isLive,
     cameraStream,

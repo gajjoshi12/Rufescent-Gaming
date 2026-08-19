@@ -91,6 +91,8 @@ export function BroadcastControls({ broadcast }: { broadcast: Broadcast }) {
   const {
     state,
     supported,
+    screenSupported,
+    looksLikeIOS,
     ready,
     cameraStream,
     screenStream,
@@ -173,15 +175,41 @@ export function BroadcastControls({ broadcast }: { broadcast: Broadcast }) {
 
         <ControlButton
           label={
-            screenOn ? "Stop share" : state.screen === "requesting" ? "Choose…" : "Share screen"
+            !screenSupported
+              ? "No screen share"
+              : screenOn
+                ? "Stop share"
+                : state.screen === "requesting"
+                  ? "Choose…"
+                  : "Share screen"
           }
           icon={screenOn ? "stop" : "screen"}
           active={screenOn}
           danger={screenOn}
           onClick={screenOn ? stopScreenShare : startScreenShare}
-          disabled={state.screen === "requesting"}
+          // Disabled rather than left tappable: on iOS this can never
+          // succeed, so offering it only to fail is worse than saying so.
+          disabled={!screenSupported || state.screen === "requesting"}
         />
       </div>
+
+      {!screenSupported && (
+        <p className="rounded-lg border border-white/10 bg-white/4 px-3 py-2 text-[0.625rem] leading-relaxed text-white/45">
+          {looksLikeIOS ? (
+            <>
+              Screen sharing is not possible on iPhone or iPad. Apple requires every iOS browser to
+              use WebKit, which does not implement it — so Chrome and Firefox fail here exactly as
+              Safari does. Your camera and microphone work normally; use a desktop browser if you
+              want to share a screen.
+            </>
+          ) : (
+            <>
+              This browser does not support screen capture. Camera and microphone still work — try a
+              recent desktop Chrome, Edge, Firefox or Safari to share a screen.
+            </>
+          )}
+        </p>
+      )}
 
       {/* Device picker — labels only populate after a grant */}
       {cameraOn && cameras.length > 1 && (
