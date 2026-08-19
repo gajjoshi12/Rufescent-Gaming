@@ -31,6 +31,14 @@ export const metadata: Metadata = {
     "Exchange and fixed odds across soccer, cricket, basketball, tennis and esports, plus a full casino and daily fantasy contests. 18+ only. Please gamble responsibly.",
   applicationName: "Rufescent Gaming",
   robots: { index: false, follow: false },
+  // Lets an iOS home-screen shortcut open without Safari chrome, which is
+  // also what gives the broadcast studio a normal-looking viewport.
+  appleWebApp: {
+    capable: true,
+    title: "Rufescent",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: { telephone: false },
 };
 
 export const viewport: Viewport = {

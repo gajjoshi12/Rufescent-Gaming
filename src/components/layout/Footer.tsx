@@ -76,6 +76,7 @@ export function Footer() {
               { label: "In-play", href: "/sports/live" },
               { label: "Casino", href: "/casino" },
               { label: "Poker room", href: "/casino/poker" },
+              { label: "Live streams", href: "/live" },
               { label: "Fantasy", href: "/fantasy" },
             ]}
           />
